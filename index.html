@@ -10,11 +10,11 @@
     	<a-assets>
     		<!-- No loop. -->
    			 <img id="floor" src="/Assets/Floor.jpg" width="523" height="399"></img>
-   			 <img id="wall" src="https://ucarecdn.com/2bbc6838-84ea-40b3-9104-37619299450f/" width="2553" height="1296"></img>
-   			 <img id="ceiling" src="https://ucarecdn.com/b52d6266-8bf0-4631-bb41-c6964343234a/" width="736" height="736"></img>
-   			 <img id="trim" src="https://ucarecdn.com/b77eb23c-bece-42e9-b30e-649b01ff9b03/" width="800" height="800"></img>
+   			 <img id="wall" src="/Assets/StoneWall.jpg" width="2553" height="1296"></img>
+   			 <img id="ceiling" src="/Assets/Ceiling.jpg" width="736" height="736"></img>
+   			 <img id="trim" src="/Assets/Trim.jpg" width="800" height="800"></img>
 
-   			 <video id="tv" src="https://ucarecdn.com/84d22560-2f93-4fab-9e9c-ec1831043581/" autoplay loop="true"></video>
+   			 <video id="tv" src="/Assets/TV.gif" autoplay loop="true"></video>
 
    			 <a-asset-item id="piano" src="https://ucarecdn.com/1c194e55-e529-43c2-98d8-6e0706727acb/"></a-asset-item>
  		</a-assets>
@@ -42,10 +42,10 @@
 
 	    <!-- Ceiling -->
 	    <a-plane position="0 10 0" rotation="90 0 0" width="70" height="70" shadow="" material="side:double; src: #ceiling; repeat: 10 10"></a-plane>
-	      
+
 	    <!-- Floor -->
 	    <a-plane position="0 0 0" rotation="-90 0 0" width="70" height="70" shadow="" material="side:double; src: #floor; repeat: 10 15"></a-plane>
-	      
+
 	    <!-- Walls -->
 	    <a-plane position="0 5 -35" width="70" height="9" color="white" material="opacity:0.15;color:#abe7f8;side:double"></a-plane>
 	    <a-plane position="0 5 35" width="70" height="10" material="side:double; src: #wall; repeat: 3 1"></a-plane>
@@ -68,7 +68,7 @@
                to="0 -10 0"
                repeat="indefinite"></a-animation>-->
 		</a-entity>
-	      
+
 	    <!-- Outdoors -->
 	    <a-sky color="#99bffc"></a-sky>
 	    <!--
