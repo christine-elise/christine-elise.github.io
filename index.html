@@ -15,23 +15,24 @@
    			 <img id="trim" src="https://ucarecdn.com/b77eb23c-bece-42e9-b30e-649b01ff9b03/" width="800" height="800"></img>
 
    			 <video id="tv" src="https://ucarecdn.com/84d22560-2f93-4fab-9e9c-ec1831043581/" autoplay loop="true"></video>
+
+   			 <a-asset-item id="piano" src="https://ucarecdn.com/1c194e55-e529-43c2-98d8-6e0706727acb/"></a-asset-item>
  		</a-assets>
 
  		<!-- JavaScript -->
-  		<!--<script type="text/javascript">
-  			AFRAME.registerComponent('tvClick', {
-				init: function () {
-		    		var state = 0;
-		    		if(state == 0)
-		    		{
-	    				this.el.addEventListener('click', function (evt) {
-	      					this.setAttribute('material', 'src', 'https://ucarecdn.com/84d22560-2f93-4fab-9e9c-ec1831043581/');
-	    				});
+  		<script type="text/javascript">
+  			AFRAME.registerComponent('cursor-listener', {
+  				init: function () {
+				    var lastIndex = -1;
+				    var COLORS = ['white', 'black'];
+				    var tv = document.querySelector("#tvScreen");
 
-	    				state = 1;
-    				}
+				    tv.addEventListener('click', function (evt) {
+					      lastIndex = (lastIndex + 1) % COLORS.length;
+					      this.setAttribute('material', 'color', COLORS[lastIndex]);
+				    });
   				}
-			});-->
+			});
   		</script>
 
     	<!-- Camera -->
@@ -152,8 +153,8 @@
 
 	 	<!-- Flat Screen TV -->
 	 	<a-entity position="-34.7 1 -15">
-	 		<a-box position="0 4 0" height="8" width="0.3" depth="13" color="darkgrey"></a-box>
-	 		<a-box position="0.25 4 0" rotation="0 90 0" height="7" width="12" depth="0.1" color="black" material="side:double"></a-box>
+	 		<a-box position="0 4 0" height="8" width="0.3" depth="13" color="#292929"></a-box>
+	 		<a-box id="tvScreen" cursor-listener position="0.25 4 0" rotation="0 90 0" height="7" width="12" depth="0.1" color="black" material="side:double; src: #tv"></a-box>
 	 	</a-entity>
 
 	 	<!-- Desk -->
@@ -204,6 +205,8 @@
 	 		<a-box position="0 1.5 2.05" width="4.2" height="0.2" depth="0.1" color="black"></a-box>
 	 		<a-box position="0 1.5 -2.05" width="4.2" height="0.2" depth="0.1" color="black"></a-box>
 	 	</a-entity>
+
+	 	<a-entity gltf-model="#piano"></a-entity>
 
 	  	<!-- Sunlight -->
 	  	<a-entity light="type:point;intensity:0.6;castShadow:true" position="161.815 164.48 -169.155"></a-entity>
