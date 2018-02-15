@@ -17,6 +17,7 @@
 
    			 <a-asset-item id="piano" src="Assets/Piano/scene.gltf"></a-asset-item>
          <a-asset-item id="couch" src="Assets/Couch/scene.gltf"></a-asset-item>
+         <a-asset-item id="armChair" src="Assets/ArmChair/scene.gltf"></a-asset-item>
  		</a-assets>
 
  		<!-- JavaScript -->
@@ -82,7 +83,7 @@
 	  	-->
 
 	  	<!-- Couch -->
-      <a-entity position="-17 0 -12" rotation="0 -90 0" gltf-model="#couch" scale="0.021 0.015 0.021"></a-entity>
+      <a-entity position="-17 0 -12" rotation="0 -90 0" gltf-model="#couch" scale="0.021 0.016 0.021"></a-entity>
 
 	  	<!--<a-entity position="-15 0 -10">-->
         <!-- Back & Bottom -->
@@ -99,15 +100,19 @@
 	  	</a-entity>
         -->
 	  	<!-- Chair -->
-	  	<a-entity position="-20 0 -27" rotation="0 45 0">
+      <a-entity position="-21 0 -28" rotation="0 -135 0" gltf-model="#armChair" scale=".4 .37 .4"></a-entity>
+	  	<!--<a-entity position="-20 0 -27" rotation="0 45 0">-->
         <!-- Back & Bottom -->
+        <!--
 	  		<a-box position="0 1.5 0" width="1" height="3" depth="4"></a-box>
 	  		<a-box position="-1.5 0.5 0" width="3" height="1" depth="4"></a-box>
-
+        -->
 	  		<!-- Arm Rests -->
+        <!--
 	  		<a-box position="-1.5 1.5 -1.5" width="3" height="1" depth="1"></a-box>
 	  		<a-box position="-1.5 1.5 1.5" width="3" height="1" depth="1"></a-box>
-	  	</a-entity>
+        -->
+	  	<!--</a-entity>-->
 
 	  	<!-- Bar Cabinet -->
 	  	<a-box position="25 4 33.9" width="15" height="8" depth="2" color="#301c0c"></a-box>
@@ -171,20 +176,22 @@
 
 	 	<!-- Desk -->
 	 	<a-entity position="-33 0 26" rotation="0 90 0">
+      <!-- Top -->
 	 		<a-box position="0 2 0" width="10" height="0.2" depth="3.5" color="skyblue" material="opacity: 0.5"></a-box>
-	 		<a-box position="-8 1 -1.25" width="0.25" height="2" depth="0.25" color="black"></a-box>
-	 		<a-box position="-5.25 1 1.5" width="0.25" height="2" depth="0.25" color="black"></a-box>
-	 		<a-box position="4.5 1 -1.25" width="0.25" height="2" depth="0.25" color="black"></a-box>
-	 		<a-box position="4.5 1 1.25" width="0.25" height="2" depth="0.25" color="black"></a-box>
-
+      <!-- Legs -->
+	 		<a-box position="-8.4 1 -1.65" width="0.25" height="2" depth="0.25" color="black"></a-box>
+	 		<a-box position="-5 1 1.75" width="0.25" height="2" depth="0.25" color="black"></a-box>
+	 		<a-box position="4.9 1 -1.65" width="0.25" height="2" depth="0.25" color="black"></a-box>
+	 		<a-box position="4.9 1 1.65" width="0.25" height="2" depth="0.25" color="black"></a-box>
+      <!-- Top 02 -->
 	 		<a-box position="-6.75 2 3.25" width="3.5" height="0.2" depth="10" color="skyblue" material="opacity: 0.5"></a-box>
-	 		<a-box position="-8 1 7.75" width="0.25" height="2" depth="0.25" color="black"></a-box>
-	 		<a-box position="-5.5 1 7.75" width="0.25" height="2" depth="0.25" color="black"></a-box>
-
+      <!-- Legs 02 -->
+	 		<a-box position="-8.4 1 8.15" width="0.25" height="2" depth="0.25" color="black"></a-box>
+	 		<a-box position="-5.1 1 8.15" width="0.25" height="2" depth="0.25" color="black"></a-box>
+      <!-- Top Frame -->
 	 		<a-box position="-1.75 2 -1.75" width="13.7" height="0.25" depth="0.1" color="black"></a-box>
 	 		<a-box position="0.05 2 1.8" width="10.1" height="0.25" depth="0.1" color="black"></a-box>
 	 		<a-box position="-6.75 2 8.30" width="3.7" height="0.25" depth="0.1" color="black"></a-box>
-
 	 		<a-box position="-8.55 2 3.25" width="0.1" height="0.25" depth="10.1" color="black"></a-box>
 	 		<a-box position="-4.95 2 5.05" width="0.1" height="0.25" depth="6.55" color="black"></a-box>
 	 		<a-box position="5.05 2 0.05" width="0.1" height="0.25" depth="3.6" color="black"></a-box>
