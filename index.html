@@ -8,15 +8,15 @@
     <a-scene>
     	<!-- Assets -->
     	<a-assets>
-   			 <img id="floor" src="Assets\Floor.jpg" width="523" height="399"></img>
-   			 <img id="wall" src="Assets\StoneWall.jpg" width="2553" height="1296"></img>
-   			 <img id="ceiling" src="Assets\Ceiling.jpg" width="736" height="736"></img>
-   			 <img id="trim" src="Assets\Trim.jpg" width="800" height="800"></img>
+   			 <img id="floor" src="Assets/Floor.jpg" width="523" height="399"></img>
+   			 <img id="wall" src="Assets/StoneWall.jpg" width="2553" height="1296"></img>
+   			 <img id="ceiling" src="Assets/Ceiling.jpg" width="736" height="736"></img>
+   			 <img id="trim" src="Assets/Trim.jpg" width="800" height="800"></img>
 
-   			 <video id="tv" src="Assets\TV.mp4" autoplay loop="true"></video>
+   			 <video id="tv" src="Assets/TV.mp4" autoplay loop="true"></video>
 
-        <!-- ********************************GLTF MODEL ISSUE******************************** -->
-   			 <a-asset-item id="pictureFrame" src="Assets\scene.gltf"></a-asset-item>
+   			 <a-asset-item id="piano" src="Assets/Piano/scene.gltf"></a-asset-item>
+         <a-asset-item id="couch" src="Assets/Couch/scene.gltf"></a-asset-item>
  		</a-assets>
 
  		<!-- JavaScript -->
@@ -35,13 +35,16 @@
 			});
   		</script>
 
-      <!-- ********************************GLTF MODEL ISSUE******************************** -->
-       <a-entity gltf-model="#pictureFrame" scale="10 10 10"></a-entity>
-
     	<!-- Camera -->
     	<a-entity camera="userHeight: 4" look-controls wasd-controls>
     		<a-entity cursor="fuse: false" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat"></a-entity>
     	</a-entity>
+
+	  	<!-- Sunlight -->
+	  	<a-entity light="type:point;intensity:0.6;castShadow:true" position="161.815 164.48 -169.155"></a-entity>
+
+	  	<!-- Inside Ambient Light -->
+	  	<a-entity light="color:#BBB;type:ambient"></a-entity>
 
 	    <!-- Ceiling -->
 	    <a-plane position="0 10 0" rotation="90 0 0" width="70" height="70" shadow="" material="side:double; src: #ceiling; repeat: 10 10"></a-plane>
@@ -79,18 +82,22 @@
 	  	-->
 
 	  	<!-- Couch -->
-	  	<a-entity position="-15 0 -10">
+      <a-entity position="-17 0 -12" rotation="0 -90 0" gltf-model="#couch" scale="0.021 0.015 0.021"></a-entity>
+
+	  	<!--<a-entity position="-15 0 -10">-->
         <!-- Back & Bottom -->
+        <!--
 	  		<a-box position="0 1.5 0" width="1" height="3" depth="16"></a-box>
 	  		<a-box position="-1.5 0.5 0" width="3" height="1" depth="16"></a-box>
 	  		<a-box position="-3.5 1.5 8" width="8" height="3" depth="1"></a-box>
 	  		<a-box position="-5.25 0.5 6.5" width="4.5" height="1" depth="3"></a-box>
-
+        -->
 	  		<!-- Arm Rests -->
+        <!--
 	  		<a-box position="-1.25 1.5 -7.5" width="3.5" height="1" depth="1"></a-box>
 	  		<a-box position="-7 1.5 6.75" width="1" height="1" depth="3.5"></a-box>
 	  	</a-entity>
-
+        -->
 	  	<!-- Chair -->
 	  	<a-entity position="-20 0 -27" rotation="0 45 0">
         <!-- Back & Bottom -->
@@ -184,13 +191,15 @@
 	 	</a-entity>
 
 	 	<!-- Table -->
-	 	<a-entity position="-23 0 -13">
+	 	<a-entity position="-24 0 -15">
+      <!-- Top -->
 	 		<a-box position="0 1 0" width="3.5" height="0.2" depth="10" color="skyblue" material="opacity: 0.5"></a-box>
-	 		<a-box position="1.25 0.5 4.5" width="0.25" height="1" depth="0.25" color="black"></a-box>
-	 		<a-box position="-1.25 0.5 4.5" width="0.25" height="1" depth="0.25" color="black"></a-box>
-	 		<a-box position="1.25 0.5 -4.5" width="0.25" height="1" depth="0.25" color="black"></a-box>
-	 		<a-box position="-1.25 0.5 -4.5" width="0.25" height="1" depth="0.25" color="black"></a-box>
-
+      <!-- Legs -->
+	 		<a-box position="1.65 0.5 4.9" width="0.25" height="1" depth="0.25" color="black"></a-box>
+	 		<a-box position="-1.65 0.5 4.9" width="0.25" height="1" depth="0.25" color="black"></a-box>
+	 		<a-box position="1.65 0.5 -4.9" width="0.25" height="1" depth="0.25" color="black"></a-box>
+	 		<a-box position="-1.65 0.5 -4.9" width="0.25" height="1" depth="0.25" color="black"></a-box>
+      <!-- Top Frame -->
 	 		<a-box position="1.80 1 0" width="0.1" height="0.2" depth="10.2" color="black"></a-box>
 	 		<a-box position="-1.80 1 0" width="0.1" height="0.2" depth="10.2" color="black"></a-box>
 	 		<a-box position="0 1 -5.05" width="3.7" height="0.2" depth="0.1" color="black"></a-box>
@@ -198,24 +207,34 @@
 	 	</a-entity>
 
 	 	<!-- End Table -->
-	 	<a-entity position="-17 0 -21">
+	 	<a-entity position="-17 0 -21.75">
+      <!-- Top -->
 	 		<a-box position="0 1.5 0" width="4" height="0.2" depth="4" color="skyblue" material="opacity: 0.5"></a-box>
-	 		<a-box position="1.75 0.75 1.75" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
-	 		<a-box position="1.75 0.75 -1.75" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
-	 		<a-box position="-1.75 0.75 1.75" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
-	 		<a-box position="-1.75 0.75 -1.75" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
-
+      <!-- Legs -->
+	 		<a-box position="1.9 0.75 1.9" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
+	 		<a-box position="1.9 0.75 -1.9" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
+	 		<a-box position="-1.9 0.75 1.9" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
+	 		<a-box position="-1.9 0.75 -1.9" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
+      <!-- Top Frame -->
 	 		<a-box position="-2.05 1.5 0" width="0.1" height="0.2" depth="4.2" color="black"></a-box>
 	 		<a-box position="2.05 1.5 0" width="0.1" height="0.2" depth="4.2" color="black"></a-box>
 	 		<a-box position="0 1.5 2.05" width="4.2" height="0.2" depth="0.1" color="black"></a-box>
 	 		<a-box position="0 1.5 -2.05" width="4.2" height="0.2" depth="0.1" color="black"></a-box>
 	 	</a-entity>
 
-	  	<!-- Sunlight -->
-	  	<a-entity light="type:point;intensity:0.6;castShadow:true" position="161.815 164.48 -169.155"></a-entity>
+      <!-- Piano -->
+      <a-entity position="28 0 -28" rotation="0 -45 0" gltf-model="#piano" scale="3 3 3"></a-entity>
 
-	  	<!-- Inside Ambient Light -->
-	  	<a-entity light="color:#BBB;type:ambient"></a-entity>
+      <!-- Piano Chair -->
+      <a-entity position="24.25 0 -24.25" rotation="0 45 0">
+        <!-- Top -->
+  	 		<a-box position="0 1.5 0" width="2" height="0.2" depth="4" color="black"></a-box>
+        <!-- Legs -->
+  	 		<a-box position="0.75 0.75 1.75" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
+  	 		<a-box position="-0.75 0.75 1.75" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
+  	 		<a-box position="0.75 0.75 -1.75" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
+  	 		<a-box position="-0.75 0.75 -1.75" width="0.25" height="1.5" depth="0.25" color="black"></a-box>
+  	 	</a-entity>
 
     </a-scene>
   </body>
