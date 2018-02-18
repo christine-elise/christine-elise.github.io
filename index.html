@@ -4,6 +4,12 @@
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+
+    <script>
+    	// Global Variables
+    	tvOn = false;
+    	monitorsOn = false;
+    </script>
   </head>
   <body>
     <a-scene>
@@ -36,53 +42,44 @@
 
  		<!-- JavaScript -->
   		<script type="text/javascript">
-  			AFRAME.registerComponent('tv-click', {
-  				init: function () {
-				    var lastIndex = -1;
-				    var COLORS = ['white', 'black'];
-				    var tv = document.querySelector("#tvScreen");
+			
+			function tvClick()
+			{
+				var tv = document.querySelector("#tvScreen");
 
-				    tv.addEventListener('click', function (evt) {
-					      lastIndex = (lastIndex + 1) % COLORS.length;
-					      this.setAttribute('material', 'color', COLORS[lastIndex]);
-				    });
-  				}
-			});
-
-			AFRAME.registerComponent('monitor-click', {
-  				init: function () {
-				    var lastIndex = -1;
-				    var COLORS = ['white', 'black'];
-				    var screenM = document.querySelector("#middleScreen");
-				    var screenL = document.querySelector("#leftScreen");
-				    var screenR = document.querySelector("#rightScreen");
-
-				    screenM.addEventListener('click', function (evt) {
-					      lastIndex = (lastIndex + 1) % COLORS.length;
-					      screenM.setAttribute('material', 'color', COLORS[lastIndex]);
-					      screenL.setAttribute('material', 'color', COLORS[lastIndex]);
-					      screenR.setAttribute('material', 'color', COLORS[lastIndex]);
-				    });
-  				}
-			});
-
-			/*
-			AFRAME.registerComponent('blinds-down',{
- 				 init:function(){
- 				 	var button = document.querySelector('#blindsButton');
- 				 	var blinds = document.querySelector('#blinds');
-
-     		 		button.el.addEventListener("click",function(){
-			            var animation = document.createElement("a-animation");
-			            animation.setAttribute("attribute","position");
-			            animation.setAttribute("to","0 -10 0");
-			            animation.setAttribute("dur","8000");
-			            animation.setAttribute("repeat","indefinite");
-			            blinds.data.target.appendChild(animation);
-					}.bind(button));
+				if(!tvOn)
+				{
+					tv.setAttribute('material', 'color', 'white');
+					tvOn = true;
 				}
-			});
-			*/
+				else
+				{
+					tv.setAttribute('material', 'color', 'black');
+					tvOn = false;
+				}
+			}
+
+			function monitorClick()
+			{
+				var screenM = document.querySelector("#middleScreen");
+				var screenL = document.querySelector("#leftScreen");
+				var screenR = document.querySelector("#rightScreen");
+
+				if(!monitorsOn)
+				{
+					screenM.setAttribute('material', 'color', 'white');
+					screenL.setAttribute('material', 'color', 'white');
+			        screenR.setAttribute('material', 'color', 'white');
+					monitorsOn = true;
+				}
+				else
+				{
+					screenM.setAttribute('material', 'color', 'black');
+			        screenL.setAttribute('material', 'color', 'black');
+			        screenR.setAttribute('material', 'color', 'black');
+					monitorsOn = false;
+				}
+			}
   		</script>
 
     	<!-- Camera -->
@@ -277,7 +274,7 @@
 	 	<!-- Flat Screen TV -->
 	 	<a-entity position="-24.7 1 -10">
 	 		<a-box position="0 4 0" height="8" width="0.3" depth="13" color="#292929"></a-box>
-	 		<a-box id="tvScreen" tv-click position="0.25 4 0" rotation="0 90 0" height="7" width="12" depth="0.1" color="black" material="side:double; src: #tv"></a-box>
+	 		<a-box id="tvScreen" onclick="tvClick()" position="0.25 4 0" rotation="0 90 0" height="7" width="12" depth="0.1" color="black" material="side:double; src: #tv"></a-box>
 	 	</a-entity>
 
 	 	<!-- Picture Canvases -->
@@ -312,12 +309,12 @@
 	 	</a-entity>
 
     <!-- Desktop Monitors -->
-    <a-entity position="-24 2.15 16.5" rotation="0 90 0">
+    <a-entity onclick="monitorClick()" position="-24 2.15 16.5" rotation="0 90 0">
 	    <a-entity>
 	        <a-box width="1" height="0.05" depth="0.3" color="#232323"></a-box>
 	        <a-box position="0 0.32 -0.08" width="0.1" height="0.75" depth="0.1" color="#232323"></a-box>
 	        <a-box position="0 1 0" width="2.25" height="1.5" depth="0.1" color="#232323"></a-box>
-	        <a-box id="middleScreen" monitor-click position="0 1s 0.08" width="2.15" height="1.4" depth="0.02" color="black" material="src: #monitorMid"></a-box>
+	        <a-box id="middleScreen" position="0 1s 0.08" width="2.15" height="1.4" depth="0.02" color="black" material="src: #monitorMid"></a-box>
 	    </a-entity>
 	    <a-entity position="2.5 0 0.4" rotation="0 -20 0">
 	        <a-box width="1" height="0.05" depth="0.3" color="#232323"></a-box>
