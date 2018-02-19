@@ -136,7 +136,7 @@ At first, the images that I used for my materials would not load. After some qui
 Originally, my gltf models would not show up anywhere in the scene. While this is a very rookie mistake, I realized this was due to the use of backslashes in my file paths instead of utilizing the correct method of forward slashes.
 
 ### Animating the Blinds
-My original approach for all interactable objects was to utilize the **AFRAME.registerComponent()** functionality to attach click event listeners. However, this method did not appear to be compatible when it came to emitting a pre-defined **<a-animation>**. Instead, I rewrote each of my events as JS functions and called them using the **onclick** events. This not only was a simpler approach, but it improved readability.
+My original approach for all interactable objects was to utilize the **AFRAME.registerComponent()** functionality to attach click event listeners. However, this method did not appear to be compatible when it came to emitting a pre-defined **a-animation**. Instead, I rewrote each of my events as JS functions and called them using the **onclick** events. This not only was a simpler approach, but it improved readability.
 
 ### A-Frame Extras
 As I reached the final stages of my development, one problem still stood before me - navigating around the space using the Google Cardboard. After some research, I found that the A-Frame Extras library solved this problem by utilizing the **universal-controls** add-on. As of now, this seems to be the best solution; however, there is a small functionality issue. When navigating using a mouse and keyboard, the controls occasionally "rubber-band" you back to a previous position. Hopefully this issue will be fixed in a future update.
@@ -168,4 +168,5 @@ https://media.giphy.com/media/RQQqlCw32bR7i/giphy.gif
 ### Sound
 https://freesound.org/people/HerbertBoland/sounds/29834/
 
+### gltf Models
 *gltf model authors are included in their respective assets folders!*
