@@ -9,7 +9,11 @@
     	// Global Variables
     	tvOn = false;
     	monitorsOn = false;
+    	dim = false;
+    	blindsActive = false;
+    	lampOn = false;
     </script>
+
   </head>
   <body>
     <a-scene>
@@ -30,14 +34,15 @@
    			 <img id="bottle01" src="Assets/BottleLabel01.jpg" width="1536" height="1229"></img>
    			 <img id="bottle02" src="Assets/BottleLabel02.jpg" width="1595" height="1229"></img>
    			 <img id="bottle03" src="Assets/BottleLabel03.jpg" width="2475" height="1366"></img>
+   			 <img id="grass" src="Assets/Grass.jpg" width="1600" height="1600"></img>
 
    			 <video id="tv" src="Assets/TV.mp4" autoplay loop="true"></video>
    			 <video id="monitorMid" muted src="Assets/MonitorMid.mp4" autoplay loop="true"></video>
 
    			 <a-asset-item id="piano" src="Assets/Piano/scene.gltf"></a-asset-item>
-         <a-asset-item id="couch" src="Assets/Couch/scene.gltf"></a-asset-item>
-         <a-asset-item id="armChair" src="Assets/ArmChair/scene.gltf"></a-asset-item>
-         <a-asset-item id="deskChair" src="Assets/DeskChair/scene.gltf"></a-asset-item>
+         	 <a-asset-item id="couch" src="Assets/Couch/scene.gltf"></a-asset-item>
+         	 <a-asset-item id="armChair" src="Assets/ArmChair/scene.gltf"></a-asset-item>
+         	 <a-asset-item id="deskChair" src="Assets/DeskChair/scene.gltf"></a-asset-item>
  		</a-assets>
 
  		<!-- JavaScript -->
@@ -80,6 +85,56 @@
 					monitorsOn = false;
 				}
 			}
+
+			function lampClick()
+			{
+				var lamp = document.querySelector("#lampLight");
+
+				if(!lampOn)
+				{
+					lamp.setAttribute('light', 'intensity', '0.6');
+					lampOn = true;
+				}
+				else
+				{
+					lamp.setAttribute('light', 'intensity', '0');
+					lampOn = false;
+				}
+			}
+
+			function dimmerClick()
+			{
+				var light = document.querySelector("#insideLight");
+
+				if(!dim)
+				{
+					light.setAttribute('light', 'color', '#1c0f62');
+					//outlight.setAttribute('light', 'intensity', '0');
+					dim = true;
+				}
+				else
+				{
+					light.setAttribute('light', 'color', '#BBB');
+					//outlight.setAttribute('light', 'intensity', '0.6');
+					dim = false;
+				}
+			}
+
+			function blindsClick()
+			{
+				var blinds = document.querySelector("#blinds");
+
+				if(!blindsActive)
+				{
+					blinds.emit('blindsDown');
+					blindsActive = true;
+				}
+				else
+				{
+					blinds.emit('blindsUp');
+					blindsActive = false;
+				}
+			}
   		</script>
 
     	<!-- Camera -->
@@ -87,11 +142,17 @@
     		<a-entity cursor="fuse: false" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat"></a-entity>
     	</a-entity>
 
+    	<!-- Sky -->
+	    <a-sky color="#99bffc"></a-sky>
+
+	    <!-- Grass -->
+	    <a-plane position="0 -0.5 0" rotation="-90 0 0" width="100" height="100" material="shader: flat; src: #grass; repeat: 15 15"></a-plane>
+	  	
 	  	<!-- Sunlight -->
 	  	<a-entity light="type:point;intensity:0.6;castShadow:true" position="161.815 164.48 -169.155"></a-entity>
 
 	  	<!-- Inside Ambient Light -->
-	  	<a-entity light="color:#BBB;type:ambient"></a-entity>
+	  	<a-entity id="insideLight" light="color:#BBB;type:ambient"></a-entity>
 
 	    <!-- Ceiling -->
 	    <a-plane position="0 10 0" rotation="90 0 0" width="50" height="50" shadow="" material="side:double; src: #ceiling; repeat: 10 10"></a-plane>
@@ -112,51 +173,42 @@
 	    <a-box position="24.75 9.75 0" rotation="0 90 0" width="50" height="0.5" depth="0.5" shadow="" material="side:double; src: #trim; repeat: 10 1"></a-box>
 
 	    <!-- Blinds -->
-	    <!--
-	    <a-box id="blindsButton" position="0 4 0" width="1" height="1" depth="1"></a-box>
 	    <a-entity id="blinds">
   			<a-box position="0 15 -24.9" color="black" width="50" height="9" depth="0.1" material="side: double; opacity: 0.75" shadow=""></a-box>
   			<a-box position="24.9 15 0" rotation="0 90 0" color="black" width="50" height="9" depth="0.1" material="side: double; opacity: 0.5" shadow=""></a-box>
-		</a-entity>
-	-->
 
-	    <!-- Outdoors -->
-	    <a-sky color="#99bffc"></a-sky>
-	    <!--
-	    <a-entity environment="preset: forest; flatShading: true; playArea: "></a-entity>
-	  	-->
+  			<!-- Down Animation -->
+  			<a-animation attribute="position"
+               dur="4000"
+               to="0 -10 0"
+               begin="blindsDown"
+               repeat="0"></a-animation>
+
+              <!-- Up Animation -->
+  			<a-animation attribute="position"
+               dur="4000"
+               to="0 10 0"
+               begin="blindsUp"
+               repeat="0"></a-animation>
+		</a-entity>
+
+		<!-- Blinds Button -->
+	  	<a-entity onclick="blindsClick()" position="-25 4 -22" rotation="0 90 0">
+	  		<a-box position="0 0.375 0" width="0.5" height="0.75" depth="0.1" color="black"></a-box>
+	  		<a-cylinder position="0 0.4 0.1" rotation="90 0 0" radius="0.15" height="0.1" color="grey"></a-cylinder>
+	  	</a-entity>
+
+	  	<!-- Light Dimmer -->
+	  	<a-entity onclick="dimmerClick()" position="-25 4 -19" rotation="0 90 0">
+	  		<a-box position="0 0.375 0" width="0.5" height="0.75" depth="0.1" color="black"></a-box>
+	  		<a-cylinder position="0 0.4 0.1" rotation="90 0 0" radius="0.15" height="0.1" color="grey"></a-cylinder>
+	  	</a-entity>
 
 	  	<!-- Couch -->
       <a-entity position="-7 0 -6.5" rotation="0 -90 0" gltf-model="#couch" scale="0.021 0.016 0.020"></a-entity>
 
-	  	<!--<a-entity position="-15 0 -10">-->
-        <!-- Back & Bottom -->
-        <!--
-	  		<a-box position="0 1.5 0" width="1" height="3" depth="16"></a-box>
-	  		<a-box position="-1.5 0.5 0" width="3" height="1" depth="16"></a-box>
-	  		<a-box position="-3.5 1.5 8" width="8" height="3" depth="1"></a-box>
-	  		<a-box position="-5.25 0.5 6.5" width="4.5" height="1" depth="3"></a-box>
-        -->
-	  		<!-- Arm Rests -->
-        <!--
-	  		<a-box position="-1.25 1.5 -7.5" width="3.5" height="1" depth="1"></a-box>
-	  		<a-box position="-7 1.5 6.75" width="1" height="1" depth="3.5"></a-box>
-	  	</a-entity>
-        -->
 	  	<!-- Chair -->
       <a-entity position="-8 0 -22" rotation="0 -45 0" gltf-model="#armChair" scale=".004 .004 .004"></a-entity>
-	  	<!--<a-entity position="-20 0 -27" rotation="0 45 0">-->
-        <!-- Back & Bottom -->
-        <!--
-	  		<a-box position="0 1.5 0" width="1" height="3" depth="4"></a-box>
-	  		<a-box position="-1.5 0.5 0" width="3" height="1" depth="4"></a-box>
-        -->
-	  		<!-- Arm Rests -->
-        <!--
-	  		<a-box position="-1.5 1.5 -1.5" width="3" height="1" depth="1"></a-box>
-	  		<a-box position="-1.5 1.5 1.5" width="3" height="1" depth="1"></a-box>
-        -->
-	  	<!--</a-entity>-->
 
 	  	<!-- Bar Cabinet -->
 	  	<a-entity position="15 0 23.9" rotation="0 180 0" scale="1 1.2 1">
@@ -274,7 +326,7 @@
 	 	<!-- Flat Screen TV -->
 	 	<a-entity position="-24.7 1 -10">
 	 		<a-box position="0 4 0" height="8" width="0.3" depth="13" color="#292929"></a-box>
-	 		<a-box id="tvScreen" onclick="tvClick()" position="0.25 4 0" rotation="0 90 0" height="7" width="12" depth="0.1" color="black" material="side:double; src: #tv"></a-box>
+	 		<a-box id="tvScreen" onclick="tvClick()" position="0.25 4 0" rotation="0 90 0" height="7" width="12" depth="0.1" color="black" material="side:double; src: #tv; shader: flat"></a-box>
 	 	</a-entity>
 
 	 	<!-- Picture Canvases -->
@@ -314,19 +366,19 @@
 	        <a-box width="1" height="0.05" depth="0.3" color="#232323"></a-box>
 	        <a-box position="0 0.32 -0.08" width="0.1" height="0.75" depth="0.1" color="#232323"></a-box>
 	        <a-box position="0 1 0" width="2.25" height="1.5" depth="0.1" color="#232323"></a-box>
-	        <a-box id="middleScreen" position="0 1s 0.08" width="2.15" height="1.4" depth="0.02" color="black" material="src: #monitorMid"></a-box>
+	        <a-box id="middleScreen" position="0 1s 0.08" width="2.15" height="1.4" depth="0.02" color="black" material="src: #monitorMid; shader: flat"></a-box>
 	    </a-entity>
 	    <a-entity position="2.5 0 0.4" rotation="0 -20 0">
 	        <a-box width="1" height="0.05" depth="0.3" color="#232323"></a-box>
 	        <a-box position="0 0.32 -0.08" width="0.1" height="0.75" depth="0.1" color="#232323"></a-box>
 	        <a-box position="0 1 0" width="2.25" height="1.5" depth="0.1" color="#232323"></a-box>
-	        <a-box id="rightScreen" position="0 1s 0.08" width="2.15" height="1.4" depth="0.02" color="black" material="src: #monitorRight"></a-box>
+	        <a-box id="rightScreen" position="0 1s 0.08" width="2.15" height="1.4" depth="0.02" color="black" material="src: #monitorRight; shader: flat"></a-box>
 	    </a-entity>
 	    <a-entity position="-2.5 0 0.4" rotation="0 20 0">
 	        <a-box width="1" height="0.05" depth="0.3" color="#232323"></a-box>
 	        <a-box position="0 0.32 -0.08" width="0.1" height="0.75" depth="0.1" color="#232323"></a-box>
 	        <a-box position="0 1 0" width="2.25" height="1.5" depth="0.1" color="#232323"></a-box>
-	        <a-box id="leftScreen" position="0 1s 0.08" width="2.15" height="1.4" depth="0.02" color="black" material="src: #monitorLeft"></a-box>
+	        <a-box id="leftScreen" position="0 1s 0.08" width="2.15" height="1.4" depth="0.02" color="black" material="src: #monitorLeft; shader: flat"></a-box>
 	    </a-entity>
 	</a-entity>
 
@@ -384,6 +436,19 @@
 	 		<a-box position="2.05 1.5 0" width="0.1" height="0.2" depth="4.2" color="black"></a-box>
 	 		<a-box position="0 1.5 2.05" width="4.2" height="0.2" depth="0.1" color="black"></a-box>
 	 		<a-box position="0 1.5 -2.05" width="4.2" height="0.2" depth="0.1" color="black"></a-box>
+	 	</a-entity>
+
+	 	<!-- Lamp -->
+	 	<a-entity onclick="lampClick()" position="-7 1.6 -16.75" rotation="0 90 0">
+	 		<!-- Base -->
+	 		<a-box position="0 0.1 0" width="1" height="0.2" depth="0.5" color="grey"></a-box>
+	 		<a-box position="0 1 0" width="0.2" height="1.5" depth="0.1" color="grey"></a-box>
+	 		<!-- Lamp Shade -->
+	 		<a-plane position="0 1.75 0.375" width="1.5" height="1" material="side: double; opacity: 0.95"></a-plane>
+	 		<a-plane position="0 1.75 -0.375" width="1.5" height="1" material="side: double; opacity: 0.95"></a-plane>
+	 		<a-plane position="-0.75 1.75 0" rotation="0 90 0" width="0.75" height="1" material="side: double; opacity: 0.95"></a-plane>
+	 		<a-plane position="0.75 1.75 0" rotation="0 90 0" width="0.75" height="1" material="side: double; opacity: 0.95"></a-plane>
+	 		<a-entity id="lampLight" position="0 1.75 0" light="type: point; intensity: 0"></a-entity>
 	 	</a-entity>
 
       <!-- Piano -->
