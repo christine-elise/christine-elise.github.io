@@ -5,7 +5,9 @@ You can access the web-based application [here](https://christine-elise.github.i
 
 The video demo can be found [here](https://youtube.com).
 
-*screenshot here*
+*Project Screenshot*
+
+![](/Assets/Report/Project01Screenshot.png)
 
 ## Getting Started
 
@@ -17,17 +19,101 @@ In order to view live updates of my code during the development process, I downl
 ### Low-Fidelity Prototyping
 First, I decided to do some low-fidelity prototyping and sketch out the floor design for my project. I included furniture placement as well as some front and side views of the furniture so I knew how to design them out of the basic geometry A-Frame offers. Originally, I had planned to design every piece of furniture myself using the basic geometry in order to minimize rendering time; however, this changed later as development went on.
 
-*prototype picture here*
+*Paper Prototype*
+
+![](/Assets/Report/IMG_0037.JPG)
 
 ## Duties
 
 In order to achieve an A, I needed to produce a room with 15 unique models. Some models needed to be interactable by animating and/or producing sound. The room needed to be appropriately lit, and the user should have control over the lighting. And last, but certainly not least, the user should be able to navigate around the room using either keyboard and mouse input or phone touch input with/without a Google Cardboard.
 
 ### Unique Models
-*pictures of models*
+*Couch*
+
+![](/Assets/Report/Couch.png)
+
+*Chair*
+
+![](/Assets/Report/Chair.png)
+
+*Desk Chair*
+
+![](/Assets/Report/DeskChair.png)
+
+*Piano Bench*
+
+![](/Assets/Report/PianoBench.png)
+
+*Bar Stool*
+
+![](/Assets/Report/BarStool.png)
+
+*Bar*
+
+![](/Assets/Report/Bar.png)
+
+*Wine Bottle*
+
+![](/Assets/Report/WineBottle.png)
+
+*Bar Shelf*
+
+![](/Assets/Report/BarCabinet.png)
+
+*Glass Tables*
+
+![](/Assets/Report/GlassTable01.png) ![](/Assets/Report/GlassTable02.png) ![](/Assets/Report/GlassTable03.png)
+
+*Desktop Tower*
+
+![](/Assets/Report/DesktopTower.png)
+
+*Keyboard*
+
+![](/Assets/Report/Keyboard.png)
+
+*Mouse*
+
+![](/Assets/Report/Mouse.png)
+
+*Canvases*
+
+![](/Assets/Report/Canvas01.png) ![](/Assets/Report/Canvas02.png)
 
 ### Interactable Models
-*pictures of interactable*
+*TV On/Off*
+
+*While on, TV plays a video*
+
+![](/Assets/Report/TVon.png) ![](/Assets/Report/TVoff.png)
+
+*Monitors On/Off*
+
+*While on, middle monitor plays a video*
+
+![](/Assets/Report/MonitorsOn.png)
+![](/Assets/Report/MonitorsOff.png)
+
+*Dim Lights & Control Blinds Buttons*
+
+![](/Assets/Report/ControlButtons.png)
+
+*Blinds animate down when Control Blinds is pressed*
+
+![](/Assets/Report/Blinds.png)
+
+*Result when Dim Lights button is pressed*
+
+![](/Assets/Report/DimLights.png)
+
+*Lamp On/Off*
+
+![](/Assets/Report/LampOn.png)
+![](/Assets/Report/LampOff.png)
+
+*Piano plays when clicked*
+
+![](/Assets/Report/Piano.png)
 
 ### gltf Models
 As stated above, I wanted to originally minimize rendering time by creating my own models out of the basic geometry A-Frame offers; however, this changed due to the models not fitting the atmosphere of the room - they were too box-y. I decided to add a few gltf models, but to keep it at a very small number. As you can see, I managed to only include 4 gltf models, and the rendering time remains relatively low.
@@ -38,7 +124,7 @@ As stated above, I wanted to originally minimize rendering time by creating my o
 Getting started with A-Frame was rough after being so accustomed to Unity. The visual inspector does not include as many capabilities as that of Unity's. It is very basic when it comes to adding entities. In Unity, when an object is added, it automatically comes with geometry and material components. In A-Frame, those must be individually added. Unity also has many drag and drop features that A-Frame lacks. However, despite some of these shortcomings, I was eventually able to warm up to A-Frame's framework and develop a rhythm of utilizing the visual inspector and writing source code.
 
 ### Local Files
-At first, the images that I used for my materials would not load. After some quick research, I learned that Google Chromes denies requests to local files. To fix this issue, I downloaded and hosted my code temporarily on live-server for the development process.
+At first, the images that I used for my materials would not load. After some quick research, I learned that Google Chrome denies requests to local files. To fix this issue, I downloaded and hosted my code temporarily on live-server for the development process.
 
 ### gltf Models
 Originally, my gltf models would not show up anywhere in the scene. While this is a very rookie mistake, I realized this was due to the use of backslashes in my file paths instead of utilizing the correct method of forward slashes.
