@@ -3,9 +3,10 @@ This is a web-based VR application that allows you to navigate through a decorat
 
 You can access the web-based application [here](https://christine-elise.github.io/).
 
-The video demo can be found [here](https://youtube.com).
+The video demo can be found [here](https://drive.google.com/file/d/1nCwzZjx2y0-rtu1WPxGSnuVloK6WQnei/view?usp=sharing).
 
 [Source Code](https://github.com/christine-elise/christine-elise.github.io/blob/master/index.html)
+
 [Assets](https://github.com/christine-elise/christine-elise.github.io/tree/master/Assets)
 
 *Project Screenshot*
