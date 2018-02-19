@@ -5,6 +5,9 @@ You can access the web-based application [here](https://christine-elise.github.i
 
 The video demo can be found [here](https://youtube.com).
 
+[Source Code](https://github.com/christine-elise/christine-elise.github.io/blob/master/index.html)
+[Assets](https://github.com/christine-elise/christine-elise.github.io/tree/master/Assets)
+
 *Project Screenshot*
 
 ![](/Assets/Report/Project01Screenshot.png)
@@ -13,6 +16,8 @@ The video demo can be found [here](https://youtube.com).
 
 ### Framework & Software Choices
 The project was to be done in an HTML document as it needed to be web-based. A combination of basic HTML tags and JS were used to create a small portion of this application. The main portion of the application was coded using the [A-Frame web framework](https://aframe.io). In addition, I also included the help of the [A-Frame Extras](https://github.com/donmccurdy/aframe-extras) library to include the **universal-controls** add-on to the camera component. This allows for the app to be accessible through a computer or a phone with/without a Google Cardboard.
+
+This project was coded in the [Sublime Text](https://www.sublimetext.com/) editor.
 
 In order to view live updates of my code during the development process, I downloaded [live-server](https://github.com/tapio/live-server). 
 
@@ -137,3 +142,29 @@ As I reached the final stages of my development, one problem still stood before 
 
 ## Conclusion
 For this project, I designed a well-lit room that the user could navigate through and interact with select objects. The application is accessible through both a computer and phone; however, the computer navigation does have some small issues. Some obstacles were encountered when it came to warming up to the A-Frame and web development environments, but these issues were eventually eliminated. Overall, I completed a solid product that contains all the requirements to receive an excellent rating.
+
+## Asset References
+### Image Textures
+http://www.ivotopalov.com/2017/05/wood-floor-texture-seamless/best-wood-floor-texture-seamless-light-wood-floor-texture-seamless/
+https://i.pinimg.com/736x/18/fa/1d/18fa1daed91d722ae2360399b4b944b5--wood-texture-seamless-wood-floor-texture.jpg
+http://clipground.com/images/and-wallof-stone-clipart-14.jpg
+https://www.sketchuptextureclub.com/public/texture_d/0003-white-wood-flooring-texture-seamless-hr.jpg 
+http://www.lol-wallpapers.com/artwork/dark-star-orianna-khazix-login-screen/
+https://art-of-lol.com/aurelion-sol-teasing/
+https://na.leagueoflegends.com/en/page/star-guardian-skins-now-live
+http://www.theedlos.com/granite-kitchen-countertops-texture_black-granite-texture-seamless-viewing-gallery_10.html
+http://www.ivotopalov.com/2017/08/stone-tile-texture/modern-stone-tile-texture-black-subway-tile-texture-floor-tiles-subway-bevelled-long/
+https://www.replacementlaptopkeys.com/lenovo-yoga-3-pro-13-laptop-keyboard-key-replacement/
+http://www.descargar-musica320.com/e4c527721896-mouse-pad-texture.html
+https://www.mavericklabel.com/blog/10-wine-bottle-label-designs-you-should-see/
+http://handpickedselections.com/product/490-2011-Merlot.htm
+https://tablascreek.com/wines/2009_esprit_de_beaucastel_blanc
+http://seamless-pixels.blogspot.com/2014/07/grass-4-seamless-turf-lawn-green-ground.html
+
+### Video Texture
+https://media.giphy.com/media/RQQqlCw32bR7i/giphy.gif
+
+### Sound
+https://freesound.org/people/HerbertBoland/sounds/29834/
+
+*gltf model authors are included in their respective assets folders!*
