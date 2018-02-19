@@ -19,30 +19,32 @@
     <a-scene>
     	<!-- Assets -->
     	<a-assets>
-   			 <img id="floor" src="Assets/Floor.jpg" width="523" height="399"></img>
-   			 <img id="wall" src="Assets/StoneWall.jpg" width="2553" height="1296"></img>
-   			 <img id="ceiling" src="Assets/Ceiling.jpg" width="736" height="736"></img>
-   			 <img id="trim" src="Assets/Trim.jpg" width="800" height="800"></img>
-   			 <img id="SGpicture" src="Assets/SG_Picture.jpg" width="1887" height="1056"></img>
-   			 <img id="ASpicture" src="Assets/AS_Picture.png" width="1920" height="1080"></img>
-   			 <img id="monitorLeft" src="Assets/MonitorBGLeft.jpg" width="1920" height="1080"></img>
-   			 <img id="monitorRight" src="Assets/MonitorBGRight.jpg" width="1920" height="1080"></img>
-   			 <img id="barTop" src="Assets/BarTop.jpg" width="1036" height="998"></img>
-   			 <img id="barBottom" src="Assets/BarBottom.jpg" width="400" height="400"></img>
-   			 <img id="keyboard" src="Assets/Keyboard.png" width="966" height="369"></img>
-   			 <img id="mouse" src="Assets/Mouse.jpg" width="513" height="430"></img>
-   			 <img id="bottle01" src="Assets/BottleLabel01.jpg" width="1536" height="1229"></img>
-   			 <img id="bottle02" src="Assets/BottleLabel02.jpg" width="1595" height="1229"></img>
-   			 <img id="bottle03" src="Assets/BottleLabel03.jpg" width="2475" height="1366"></img>
-   			 <img id="grass" src="Assets/Grass.jpg" width="1600" height="1600"></img>
+   			 <img id="floor" src="Assets/Images/Floor.jpg" width="523" height="399"></img>
+   			 <img id="wall" src="Assets/Images/StoneWall.jpg" width="2553" height="1296"></img>
+   			 <img id="ceiling" src="Assets/Images/Ceiling.jpg" width="736" height="736"></img>
+   			 <img id="trim" src="Assets/Images/Trim.jpg" width="800" height="800"></img>
+   			 <img id="SGpicture" src="Assets/Images/SG_Picture.jpg" width="1887" height="1056"></img>
+   			 <img id="ASpicture" src="Assets/Images/AS_Picture.png" width="1920" height="1080"></img>
+   			 <img id="monitorLeft" src="Assets/Images/MonitorBGLeft.jpg" width="1920" height="1080"></img>
+   			 <img id="monitorRight" src="Assets/Images/MonitorBGRight.jpg" width="1920" height="1080"></img>
+   			 <img id="barTop" src="Assets/Images/BarTop.jpg" width="1036" height="998"></img>
+   			 <img id="barBottom" src="Assets/Images/BarBottom.jpg" width="400" height="400"></img>
+   			 <img id="keyboard" src="Assets/Images/Keyboard.png" width="966" height="369"></img>
+   			 <img id="mouse" src="Assets/Images/Mouse.jpg" width="513" height="430"></img>
+   			 <img id="bottle01" src="Assets/Images/BottleLabel01.jpg" width="1536" height="1229"></img>
+   			 <img id="bottle02" src="Assets/Images/BottleLabel02.jpg" width="1595" height="1229"></img>
+   			 <img id="bottle03" src="Assets/Images/BottleLabel03.jpg" width="2475" height="1366"></img>
+   			 <img id="grass" src="Assets/Images/Grass.jpg" width="1600" height="1600"></img>
 
-   			 <video id="tv" src="Assets/TV.mp4" autoplay loop="true"></video>
-   			 <video id="monitorMid" muted src="Assets/MonitorMid.mp4" autoplay loop="true"></video>
+   			 <video id="tv" src="Assets/Videos/TV.mp4" autoplay loop="true"></video>
+   			 <video id="monitorMid" muted src="Assets/Videos/MonitorMid.mp4" autoplay loop="true"></video>
 
-   			 <a-asset-item id="piano" src="Assets/Piano/scene.gltf"></a-asset-item>
-         	 <a-asset-item id="couch" src="Assets/Couch/scene.gltf"></a-asset-item>
-         	 <a-asset-item id="armChair" src="Assets/ArmChair/scene.gltf"></a-asset-item>
-         	 <a-asset-item id="deskChair" src="Assets/DeskChair/scene.gltf"></a-asset-item>
+   			 <a-asset-item id="piano" src="Assets/gltf Models/Piano/scene.gltf"></a-asset-item>
+         	 <a-asset-item id="couch" src="Assets/gltf Models/Couch/scene.gltf"></a-asset-item>
+         	 <a-asset-item id="armChair" src="Assets/gltf Models/ArmChair/scene.gltf"></a-asset-item>
+         	 <a-asset-item id="deskChair" src="Assets/gltf Models/DeskChair/scene.gltf"></a-asset-item>
+
+         	 <audio id="pianoSound" src="Assets/Sounds/Piano.mp3"></audio>
  		</a-assets>
 
  		<!-- JavaScript -->
@@ -51,9 +53,11 @@
 			function tvClick()
 			{
 				var tv = document.querySelector("#tvScreen");
+				var text = document.querySelector("#tvText");
 
 				if(!tvOn)
 				{
+					text.setAttribute('visible', 'false');
 					tv.setAttribute('material', 'color', 'white');
 					tvOn = true;
 				}
@@ -69,9 +73,11 @@
 				var screenM = document.querySelector("#middleScreen");
 				var screenL = document.querySelector("#leftScreen");
 				var screenR = document.querySelector("#rightScreen");
+				var text = document.querySelector("#monitorText");
 
 				if(!monitorsOn)
 				{
+					text.setAttribute('visible', 'false');
 					screenM.setAttribute('material', 'color', 'white');
 					screenL.setAttribute('material', 'color', 'white');
 			        screenR.setAttribute('material', 'color', 'white');
@@ -89,9 +95,11 @@
 			function lampClick()
 			{
 				var lamp = document.querySelector("#lampLight");
+				var text = document.querySelector("#lampText");
 
 				if(!lampOn)
 				{
+					text.setAttribute('visible', 'false');
 					lamp.setAttribute('light', 'intensity', '0.6');
 					lampOn = true;
 				}
@@ -105,9 +113,11 @@
 			function dimmerClick()
 			{
 				var light = document.querySelector("#insideLight");
+				var text = document.querySelector("#dimmerText");
 
 				if(!dim)
 				{
+					text.setAttribute('visible', 'false');
 					light.setAttribute('light', 'color', '#1c0f62');
 					//outlight.setAttribute('light', 'intensity', '0');
 					dim = true;
@@ -123,9 +133,11 @@
 			function blindsClick()
 			{
 				var blinds = document.querySelector("#blinds");
+				var text = document.querySelector("#blindsText");
 
 				if(!blindsActive)
 				{
+					text.setAttribute('visible', 'false');
 					blinds.emit('blindsDown');
 					blindsActive = true;
 				}
@@ -134,6 +146,14 @@
 					blinds.emit('blindsUp');
 					blindsActive = false;
 				}
+			}
+
+			function playPiano()
+			{
+				var text = document.querySelector("#pianoText");
+				text.setAttribute('visible', 'false');
+				var audio = document.querySelector("#pianoSound");
+				audio.play();
 			}
   		</script>
 
@@ -194,12 +214,14 @@
 
 		<!-- Blinds Button -->
 	  	<a-entity onclick="blindsClick()" position="-25 4 -22" rotation="0 90 0">
+	  		<a-text id="blindsText" value="Control Blinds" align="center" color="#000" position="0 1.25 0.1" scale="1.5 1.5 1.5"></a-text>
 	  		<a-box position="0 0.375 0" width="0.5" height="0.75" depth="0.1" color="black"></a-box>
 	  		<a-cylinder position="0 0.4 0.1" rotation="90 0 0" radius="0.15" height="0.1" color="grey"></a-cylinder>
 	  	</a-entity>
 
 	  	<!-- Light Dimmer -->
 	  	<a-entity onclick="dimmerClick()" position="-25 4 -19" rotation="0 90 0">
+	  		<a-text id="dimmerText" value="Dim Lights" align="center" color="#000" position="0 1.25 0.1" scale="1.5 1.5 1.5"></a-text>
 	  		<a-box position="0 0.375 0" width="0.5" height="0.75" depth="0.1" color="black"></a-box>
 	  		<a-cylinder position="0 0.4 0.1" rotation="90 0 0" radius="0.15" height="0.1" color="grey"></a-cylinder>
 	  	</a-entity>
@@ -327,6 +349,7 @@
 	 	<a-entity position="-24.7 1 -10">
 	 		<a-box position="0 4 0" height="8" width="0.3" depth="13" color="#292929"></a-box>
 	 		<a-box id="tvScreen" onclick="tvClick()" position="0.25 4 0" rotation="0 90 0" height="7" width="12" depth="0.1" color="black" material="side:double; src: #tv; shader: flat"></a-box>
+	 		<a-text id="tvText" value="Turn on TV" align="center" color="#FFF" position="0.4 4 0" scale="3 3 3" rotation="0 90 0"></a-text>
 	 	</a-entity>
 
 	 	<!-- Picture Canvases -->
@@ -362,6 +385,7 @@
 
     <!-- Desktop Monitors -->
     <a-entity onclick="monitorClick()" position="-24 2.15 16.5" rotation="0 90 0">
+    	<a-text id="monitorText" value="Turn on monitors" align="center" color="#FFF" position="0 1.25 0.5" scale="1 1 1"></a-text>
 	    <a-entity>
 	        <a-box width="1" height="0.05" depth="0.3" color="#232323"></a-box>
 	        <a-box position="0 0.32 -0.08" width="0.1" height="0.75" depth="0.1" color="#232323"></a-box>
@@ -440,6 +464,7 @@
 
 	 	<!-- Lamp -->
 	 	<a-entity onclick="lampClick()" position="-7 1.6 -16.75" rotation="0 90 0">
+	 		<a-text id="lampText" value="Turn on lamp" align="center" color="#000" position="0 3 0" scale="1.5 1.5 1.5"></a-text>
 	 		<!-- Base -->
 	 		<a-box position="0 0.1 0" width="1" height="0.2" depth="0.5" color="grey"></a-box>
 	 		<a-box position="0 1 0" width="0.2" height="1.5" depth="0.1" color="grey"></a-box>
@@ -452,7 +477,10 @@
 	 	</a-entity>
 
       <!-- Piano -->
-      <a-entity position="18 0 -18" rotation="0 -45 0" gltf-model="#piano" scale="3 3 3"></a-entity>
+      <a-entity position="18 0 -18" rotation="0 -45 0" onclick="playPiano()">
+      	<a-text id="pianoText" value="Play piano" align="center" color="#FFF" position="0 3 3" scale="1.5 1.5 1.5"></a-text>
+      	<a-entity gltf-model="#piano" scale="3 3 3"></a-entity>
+  	  </a-entity>
 
       <!-- Piano Chair -->
       <a-entity position="14.25 0 -14.25" rotation="0 45 0">
