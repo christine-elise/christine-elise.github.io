@@ -31,7 +31,7 @@ First, I decided to do some low-fidelity prototyping and sketch out the floor de
 
 ## Duties
 
-In order to achieve an A, I needed to produce a room with 15 unique models. Some models needed to be interactable by animating and/or producing sound. The room needed to be appropriately lit, and the user should have control over the lighting. And last, but certainly not least, the user should be able to navigate around the room using either keyboard and mouse input or phone touch input with/without a Google Cardboard.
+In order to achieve an excellent rating, I needed to produce a room with 15 unique models. Some models needed to be interactable by animating and/or producing sound. The room needed to be appropriately lit, and the user should have control over the lighting. And last, but certainly not least, the user should be able to navigate around the room using either keyboard and mouse input or phone touch input with/without a Google Cardboard.
 
 ### Unique Models
 *Couch*
